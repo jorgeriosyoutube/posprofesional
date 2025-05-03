@@ -1,0 +1,2 @@
+--liquibase formatted sql
+--include scripts/vistas/v_cajeros.sql relativeToChangelogFile=true

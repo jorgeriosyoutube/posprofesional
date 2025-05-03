@@ -1,0 +1,1 @@
+drop table pos_cajeros cascade constraints;
