@@ -17,7 +17,25 @@
                    a.activo
             FROM POS_USUARIOS a, pos_roles_usuario b
             WHERE a.id = b.usuarios_id
-            AND UPPER(b.roles_rol) = UPPER(pos_parametros_globales_pkg.trae_parametro('ROL_SUPERVISOR'))
+            AND UPPER(b.roles_rol) = UPPER(pos_parametros_globales_pkg.trae_parametro('ROL_SUPERVISOR'));
+
+            
+        </sql>
+    </changeSet>
+    <changeSet id="crear-vista-Administradores" author="admin">
+        <sql>
+            CREATE OR REPLACE VIEW v_supervisores AS
+            SELECT a.id AS usuario_id,
+                   a.nombre AS nombre_usuario,
+                   a.CORREO,
+                   b.id AS role_id,
+                   b.roles_rol,
+                   a.activo
+            FROM POS_USUARIOS a, pos_roles_usuario b
+            WHERE a.id = b.usuarios_id
+            AND UPPER(b.roles_rol) = UPPER(pos_parametros_globales_pkg.trae_parametro('ROL_ADMINISTRADOR'));
+
+            
         </sql>
     </changeSet>
 </databaseChangeLog>
